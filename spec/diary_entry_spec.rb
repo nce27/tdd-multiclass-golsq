@@ -10,9 +10,17 @@ RSpec.describe DiaryEntry do
   end
 
   describe "#count_words" do
-    it "counts the words in the contents" do
-      diary_entry = DiaryEntry.new("my_title", "one, two, three, four")
-      expect(diary_entry.count_words).to eq 4
+
+    context "given an empty contents" do
+      it "returns zero" do
+        diary_entry = DiaryEntry.new("my_title", "")
+        expect(diary_entry.count_words).to eq 0
+      end
+
+      it "counts the words in the contents" do
+        diary_entry = DiaryEntry.new("my_title", "one, two, three, four")
+        expect(diary_entry.count_words).to eq 4
+      end
     end
   end
 end
